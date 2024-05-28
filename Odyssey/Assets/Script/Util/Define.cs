@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Define : MonoBehaviour
 {
+    public const string PlayerTag = "Player";
+
     public enum GimmickPhase_Stage1
     {
         WARNING,
