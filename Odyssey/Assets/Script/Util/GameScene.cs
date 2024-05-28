@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameScene : MonoBehaviour
 {
-    StageGimmick stageGimmick;
+    public StageGimmick stageGimmick;
     void Update()
     {
         stageGimmick.Excute();
