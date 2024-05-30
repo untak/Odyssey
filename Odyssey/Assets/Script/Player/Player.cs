@@ -1,12 +1,10 @@
-using UnityEngine;
-
-public class Player : MonoBehaviour
+public class Player : Entity
 {
     PlayerMovement playermovement;
 
     private void Awake()
     {
-        RigidbodyInit();
+        base.RigidbodyInit();
     }
 
     private void Start()
@@ -15,21 +13,5 @@ public class Player : MonoBehaviour
         {
             playermovement = gameObject.AddComponent<PlayerMovement>();
         }
-    }
-
-    void RigidbodyInit()
-    {
-        Rigidbody rigidbody = GetComponent<Rigidbody>();
-
-        // 컴포넌트가 없으면 추가
-        if (rigidbody == null)
-        {
-            rigidbody = gameObject.AddComponent<Rigidbody>();
-        }
-
-        // 리지드바디 컴포넌트 초기화
-        rigidbody.constraints = RigidbodyConstraints.FreezePositionZ |
-                                RigidbodyConstraints.FreezeRotationZ |
-                                RigidbodyConstraints.FreezeRotationX;
     }
 }
