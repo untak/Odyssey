@@ -9,7 +9,7 @@ public class WindMinion_Stats : EntityStats
     [SerializeField] float bounceTime = 1f;
 
     [Header("==========")]
-    [SerializeField] WaitState waitState;
+    [SerializeField] WindMinion_Wait waitState;
 
     float bounceTimeDelta = 0f;
     bool isBouncing = false;
@@ -22,11 +22,11 @@ public class WindMinion_Stats : EntityStats
 
             if (bounceTimeDelta >= bounceTime)
             {
-                isBouncing = false;
                 // 일정 시간이 지나면 튕김을 멈추고 속도를 0으로 설정
                 enemy.rigidbody.velocity = Vector3.zero;
                 bounceTimeDelta = 0.0f; // 경과 시간 초기화
                 enemy.ChangeState(waitState);
+                isBouncing = false;
             }
         }
     }
@@ -37,17 +37,11 @@ public class WindMinion_Stats : EntityStats
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision != null)
+        if (collision != null && !isBouncing)
         {
-            /*
-            Vector3 forceDirection = -enemy.rigidbody.velocity.normalized;
-            Vector3 force = forceDirection * bounceForce;
-            enemy.rigidbody.AddForce(force, ForceMode.Impulse);
-            */
-
             // 현재 속도의 반대 방향으로 벡터 설정 및 크기 조정
             Vector3 currentVelocity = enemy.rigidbody.velocity;
-            Vector3 reverseVelocity = new Vector3(-currentVelocity.x, -currentVelocity.y, -currentVelocity.z) * bounceForce;
+            Vector3 reverseVelocity = -currentVelocity.normalized * bounceForce;
 
             // 반대 방향으로 속도 설정
             enemy.rigidbody.velocity = reverseVelocity;

@@ -8,28 +8,24 @@ public class windMinion : Enemy
 
     private void Awake()
     {
-        this.RigidbodyInit();
+        RigidbodyInit();
         stats = GetComponent<WindMinion_Stats>();
     }
     void Update()
     {
         if (canUpdate)
         {
-            if (currentState != null)
-            {
-                State nextState = currentState.Execute();
-                if (nextState != currentState)
-                {
-                    ChangeState(nextState);
-                }
-            }
+            StateTick();
         }
         else
         {
             CheckVisibility(); // Minion이 보이는지 확인
         }
     }
-
+    protected override void StateTick()
+    {
+        base.StateTick();
+    }
     void CheckVisibility()
     {
         if (IsVisible() && !isVisible)
@@ -38,13 +34,11 @@ public class windMinion : Enemy
             StartCoroutine(StartUpdatingAfterDelay()); // 1초 후에 Update 함수가 실행되도록 코루틴 시작
         }
     }
-
     IEnumerator StartUpdatingAfterDelay()
     {
         yield return new WaitForSeconds(1); // 1초 대기
         canUpdate = true; // 1초 후에 Update 함수 실행 가능
     }
-
     bool IsVisible()
     {
         Vector3 viewportPoint = Camera.main.WorldToViewportPoint(transform.position);
@@ -52,7 +46,6 @@ public class windMinion : Enemy
         // 뷰포트 내에 있는지 확인
         return viewportPoint.x > 0 && viewportPoint.x < 1 && viewportPoint.y > 0 && viewportPoint.y < 1 && viewportPoint.z > 0;
     }
-
     protected override void RigidbodyInit()
     {
         base.RigidbodyInit();
