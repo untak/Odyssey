@@ -16,5 +16,8 @@ public class Define : MonoBehaviour
     public enum LayerMask
     {
         PLAYER = 3,
+        ENEMY = 6,
+        SPAWNER = 7,
+        GROUND = 8,
     }
 }
