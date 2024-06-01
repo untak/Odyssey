@@ -1,10 +1,12 @@
+using UnityEngine;
+
 public class Player : Entity
 {
     PlayerMovement playermovement;
 
     private void Awake()
     {
-        base.RigidbodyInit();
+        RigidbodyInit();
     }
 
     private void Start()

@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Rigidbody rigid;
-
     [Header("이동")]
     [SerializeField] float moveSpeed = 5f;
 
@@ -16,13 +14,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float lowJumpMultiplier = 2f;
     [SerializeField] float raycastDistance = 1.1f;
 
+    Player player;
+
     private void Start()
     {
-        rigid = GetComponent<Rigidbody>();
-    }
-    public PlayerMovement(Rigidbody rigidbody)
-    {
-        rigid = rigidbody;
+        player = GetComponent<Player>();
     }
     private void Update()
     {
@@ -36,44 +32,43 @@ public class PlayerMovement : MonoBehaviour
         RightMove();
         JumpAndFall();
     }
-
     void StopMove()
     {
         if ((InputManager.Instance.IsLeftMove && InputManager.Instance.IsRightMove) || (!InputManager.Instance.IsLeftMove && !InputManager.Instance.IsRightMove))
         {
-            rigid.velocity = new Vector3(0, rigid.velocity.y, rigid.velocity.z);
+            player.rigidbody.velocity = new Vector3(0, player.rigidbody.velocity.y, player.rigidbody.velocity.z);
         }
     }
     void RightMove()
     {
         if (InputManager.Instance.IsRightMove)
         {
-            rigid.velocity = new Vector3(moveSpeed, rigid.velocity.y, rigid.velocity.z);
+            player.rigidbody.velocity = new Vector3(moveSpeed, player.rigidbody.velocity.y, player.rigidbody.velocity.z);
         }
     }
     void LeftMove()
     {
         if (InputManager.Instance.IsLeftMove)
         {
-            rigid.velocity = new Vector3(-moveSpeed, rigid.velocity.y, rigid.velocity.z);
+            player.rigidbody.velocity = new Vector3(-moveSpeed, player.rigidbody.velocity.y, player.rigidbody.velocity.z);
         }
     }
     void JumpAndFall()
     {
         // 점프
-        if(InputManager.Instance.IsJump && isGrounded)
+        if (InputManager.Instance.IsJump && isGrounded)
         {
-            rigid.velocity += Vector3.up * jumpForce;
+            player.rigidbody.velocity += Vector3.up * jumpForce;
         }
 
         // 낙하
-        if (rigid.velocity.y < 0)
+        if (player.rigidbody.velocity.y < 0)
         {
-            rigid.velocity += Vector3.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            player.rigidbody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
-        else if (rigid.velocity.y > 0 && !InputManager.Instance.IsJump)
+        else if (player.rigidbody.velocity.y > 0 && !InputManager.Instance.IsJump)
         {
-            rigid.velocity += Vector3.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            player.rigidbody.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
 }
