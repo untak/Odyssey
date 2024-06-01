@@ -7,6 +7,10 @@ public class Enemy : Entity
     [Header("Ω∫≈»")]
     [SerializeField] protected EntityStats stats;
 
+    public State getState()
+    {
+        return currentState;
+    }
     public void ChangeState(State newState)
     {
         if (currentState != null)
@@ -19,6 +23,18 @@ public class Enemy : Entity
         if (currentState != null)
         {
             currentState.Enter();
+        }
+    }
+
+    protected virtual void StateTick()
+    {
+        if (currentState != null)
+        {
+            State nextState = currentState.Execute();
+            if (nextState != currentState)
+            {
+                ChangeState(nextState);
+            }
         }
     }
 }

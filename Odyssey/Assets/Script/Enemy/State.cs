@@ -5,7 +5,12 @@ public abstract class State : MonoBehaviour
     [Header("다음 상태")]
     [SerializeField] protected State nextState;
 
-    [SerializeField] protected Enemy enemy;
+    protected Enemy enemy;
+
+    private void Awake()
+    {
+        enemy = GetComponentInParent<Enemy>();
+    }
 
     // 상태가 시작될 때 한 번 실행되는 함수
     public virtual void Enter() { }
