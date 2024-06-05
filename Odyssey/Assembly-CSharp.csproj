@@ -70,9 +70,7 @@
     <Compile Include="Assets\EgyptMonsters\Scripts\DestroyMe.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_InspectorHelp.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\UI\CFX_Demo_GTButton.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Spawn System\CFX_SpawnSystem.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\UI\CFX_Demo_GTToggle.cs" />
     <Compile Include="Assets\EgyptMonsters\Scripts\DemoController.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\Scenes\Mirror\Scripts\MirrorReflection.cs" />
