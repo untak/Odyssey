@@ -2,18 +2,13 @@ using UnityEngine;
 
 public class Needle : MonoBehaviour
 {
-    [SerializeField] BoxCollider hitBox;
+    [SerializeField] int damage = 0;
 
-    private void Start()
+    private void OnCollisionEnter(Collision collision)
     {
-        hitBox.isTrigger = true;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag(Define.PlayerTag))
+        if (collision.gameObject.layer == (int)Define.LayerMask.PLAYER)
         {
-            Debug.Log("Player");
+            collision.gameObject.GetComponent<Player>().stats.TakeDamage(damage);
         }
     }
 }
