@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WindMinion_Stats : EntityStats
+public class WindMinion_Stats : EnemyStats
 {
     [Header("Ãæµ¹ Èû")]
     [SerializeField] float bounceForce = 10f;
@@ -31,7 +31,7 @@ public class WindMinion_Stats : EntityStats
         }
     }
 
-    public override void TakeDamage()
+    public override void TakeDamage(int damage)
     {
         // Damage logic here
     }

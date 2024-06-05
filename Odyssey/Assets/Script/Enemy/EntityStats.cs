@@ -2,12 +2,23 @@ using UnityEngine;
 
 public abstract class EntityStats : MonoBehaviour
 {
-    protected int hp;
-    protected Enemy enemy;
+    [SerializeField] protected int hp;
+    [SerializeField] protected int damage;
 
-    private void Awake()
+    public int GetDamage()
     {
-        enemy = gameObject.GetComponent<Enemy>();
+        return damage;
     }
-    public abstract void TakeDamage();
+    public virtual void TakeDamage(int damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            Dead();
+        }
+    }
+    protected virtual void Dead()
+    {
+        Destroy(gameObject);
+    }
 }

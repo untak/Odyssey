@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FireMinion_Stats : EntityStats
+public class FireMinion_Stats : EnemyStats
 {
-    public override void TakeDamage()
-    {
-    }
 }

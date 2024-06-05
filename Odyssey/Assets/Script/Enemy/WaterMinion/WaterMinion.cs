@@ -4,7 +4,6 @@ public class WaterMinion : Enemy
 {
     [Header("==========")]
     public State launchState;
-    [SerializeField] State waitState;
     private void Awake()
     {
         RigidbodyInit();
