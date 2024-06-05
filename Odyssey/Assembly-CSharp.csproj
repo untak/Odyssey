@@ -60,30 +60,51 @@
     <Analyzer Include="E:\Program Files\Unity\Hub\Editor\2022.3.2f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Enemy\WaterMinion\WaterMinion_Stats.cs" />
+    <Compile Include="Assets\Script\Enemy\EntityStats.cs" />
     <Compile Include="Assets\Script\Util\StageGimmick.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\SpringCollider.cs" />
+    <Compile Include="Assets\Script\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Script\Player\DownPlayerWeapon.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\RefleshProbe.cs" />
+    <Compile Include="Assets\Script\Enemy\WindMinion\WindMinion_Stats.cs" />
     <Compile Include="Assets\Script\Util\Stage1.cs" />
+    <Compile Include="Assets\Script\Util\Spawner.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\SetShadowResolution.cs" />
+    <Compile Include="Assets\Script\Enemy\WindMinion\WindMinion_Wait.cs" />
+    <Compile Include="Assets\Script\Enemy\FireMinion\FireMinion_Stats.cs" />
     <Compile Include="Assets\Script\Util\Define.cs" />
     <Compile Include="Assets\Script\Util\GameScene.cs" />
+    <Compile Include="Assets\Script\Enemy\EnemyStats.cs" />
     <Compile Include="Assets\Script\Util\CameraMover.cs" />
+    <Compile Include="Assets\Script\Enemy\FireMinion\FireMinion_State.cs" />
+    <Compile Include="Assets\Script\Enemy\WaterMinion\WaterMinion_Combat.cs" />
     <Compile Include="Assets\Script\Manager\InputManager.cs" />
+    <Compile Include="Assets\Script\Enemy\WindMinion\windMinion.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\Scenes\Mirror\Scripts\MirrorReflection.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\AutoBlinkforSD.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\SpringBone.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\SpringManager.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\ThirdPersonCamera.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\SetShadowQuality.cs" />
+    <Compile Include="Assets\Script\Enemy\WaterMinion\WaterMinion.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\IdleChanger.cs" />
+    <Compile Include="Assets\Script\Enemy\FireMinion\FireMinion_Follow.cs" />
+    <Compile Include="Assets\Script\Player\HorizontalPlayerWeapon.cs" />
+    <Compile Include="Assets\Script\Player\playerStats.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\CameraController.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\FaceUpdate.cs" />
     <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\RandomWind.cs" />
+    <Compile Include="Assets\Script\Enemy\WaterMinion\WaterMinion_Wait.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\AutoBlink.cs" />
     <Compile Include="Assets\Script\Platform\Needle.cs" />
+    <Compile Include="Assets\Script\Enemy\WindMinion\WindMinion_Rush.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\Animations\Rotator.cs" />
+    <Compile Include="Assets\Script\Enemy\State.cs" />
+    <Compile Include="Assets\Script\Util\Entity.cs" />
     <Compile Include="Assets\Script\Player\Player.cs" />
+    <Compile Include="Assets\Script\Enemy\FireMinion\FireMinion.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\Scenes\Mirror\Shader\Mirror.shader" />

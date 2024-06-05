@@ -19,5 +19,6 @@ public class Define : MonoBehaviour
         ENEMY = 6,
         SPAWNER = 7,
         GROUND = 8,
+        PLAYERHIT = 10,
     }
 }
