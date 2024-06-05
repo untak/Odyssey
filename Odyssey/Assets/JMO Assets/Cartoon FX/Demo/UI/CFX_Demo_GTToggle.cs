@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 // Cartoon FX - (c) 2015 - Jean Moreno
@@ -16,14 +17,14 @@ public class CFX_Demo_GTToggle : MonoBehaviour
 	
 	private Rect CollisionRect;
 	private bool Over;
-	private GUIText Label;
+	private Text Label;
 	
 	//-------------------------------------------------------------
 	
 	void Awake()
 	{
-		CollisionRect = this.GetComponent<GUITexture>().GetScreenRect(Camera.main);
-		Label = this.GetComponentInChildren<GUIText>();
+		CollisionRect = this.GetComponent<Image>().GetScreenRect(Camera.main);
+		Label = this.GetComponentInChildren<Text>();
 		
 		UpdateTexture();
 	}
@@ -41,7 +42,7 @@ public class CFX_Demo_GTToggle : MonoBehaviour
 		else
 		{
 			Over = false;
-			this.GetComponent<GUITexture>().color = NormalColor;
+			this.GetComponent<Image>().color = NormalColor;
 		}
 		
 		UpdateTexture();
@@ -61,12 +62,12 @@ public class CFX_Demo_GTToggle : MonoBehaviour
 		Color col = State ? NormalColor : DisabledColor;
 		if(Over)
 		{
-			this.GetComponent<GUITexture>().texture = Hover;
+			this.GetComponent<Image>().texture = Hover;
 		}
 		else
-			this.GetComponent<GUITexture>().texture = Normal;
+			this.GetComponent<Image>().texture = Normal;
 		
-		this.GetComponent<GUITexture>().color = col;
+		this.GetComponent<Image>().color = col;
 		
 		if(Label != null)
 			Label.color = col * 1.75f;

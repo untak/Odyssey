@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -9,8 +10,8 @@ using System.Text.RegularExpressions;
 
 public class CFX_Demo_New : MonoBehaviour
 {
-	public GUIText EffectLabel;
-	public GUIText EffectIndexLabel;
+	public Text EffectLabel;
+	public Text EffectIndexLabel;
 	
 	public Renderer groundRenderer;
 	public Collider groundCollider;
