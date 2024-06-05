@@ -25,12 +25,14 @@ public class InputManager : MonoBehaviour
     [Header("ÀÔ·ÂÅ°")]
     [SerializeField] KeyCode leftMove = KeyCode.LeftArrow;
     [SerializeField] KeyCode rightMove = KeyCode.RightArrow;
+    [SerializeField] KeyCode downMove = KeyCode.DownArrow;
     [SerializeField] KeyCode jump = KeyCode.Z;
     [SerializeField] KeyCode attack = KeyCode.X;
     [SerializeField] KeyCode dash = KeyCode.C;
 
     private bool _isLeftMove = false;
     private bool _isRightMove = false;
+    private bool _isDownMove = false;
     private bool _isJump = false;
     private bool _isVariableJump = false;
     private bool _isAttack = false;
@@ -45,6 +47,11 @@ public class InputManager : MonoBehaviour
     {
         get { return _isRightMove; }
         private set { _isRightMove = value; }
+    }
+    public bool IsDownMove
+    {
+        get { return _isDownMove; }
+        private set { _isDownMove = value; }
     }
     public bool IsJump
     {
@@ -71,6 +78,7 @@ public class InputManager : MonoBehaviour
     {
         IsLeftMove = Input.GetKey(leftMove);
         IsRightMove = Input.GetKey(rightMove);
+        IsDownMove = Input.GetKey(downMove);
         IsJump = Input.GetKey(jump);
         IsAttack = Input.GetKeyDown(attack);
         IsDash = Input.GetKeyDown(dash);
