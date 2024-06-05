@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    PlayerMovement playermovement;
+    public PlayerMovement movement;
+    public playerStats stats;
 
     private void Awake()
     {
+        stats = GetComponent<playerStats>();
         RigidbodyInit();
     }
 
@@ -13,7 +15,7 @@ public class Player : Entity
     {
         if(GetComponent<PlayerMovement>() == null)
         {
-            playermovement = gameObject.AddComponent<PlayerMovement>();
+            movement = gameObject.AddComponent<PlayerMovement>();
         }
     }
 }
