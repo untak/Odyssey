@@ -4,9 +4,27 @@ using UnityEngine;
 
 public class GameScene : MonoBehaviour
 {
-    public StageGimmick stageGimmick;
+    [SerializeField] StageGimmick stageGimmick;
+    private void Start()
+    {
+        StageInit();
+    }
     void Update()
     {
-        stageGimmick.Excute();
+        if(stageGimmick != null)
+        {
+            stageGimmick.Excute();
+        }
+    }
+
+    void StageInit()
+    {
+        // 그림자 제거
+        Light[] lights = FindObjectsOfType<Light>();
+
+        foreach (Light light in lights)
+        {
+            light.shadows = LightShadows.None;
+        }
     }
 }
