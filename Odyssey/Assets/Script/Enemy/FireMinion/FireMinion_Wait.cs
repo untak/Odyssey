@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FireMinion_State : State
+public class FireMinion_Wait : State
 {
     [Header("인식 범위(반지름)")]
     [SerializeField] float radius = 5f;

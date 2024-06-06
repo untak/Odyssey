@@ -5,17 +5,15 @@ public class FireMinion_Follow : State
 {
     [Header("이동 속도")]
     [SerializeField] float followSpeed;
-
     [Header("폭발 범위")]
     [SerializeField] float explosionRadius;
-
     [Header("폭발 시간")]
     [SerializeField] float explosionTime;
     float explosionTimeDelta = 0f;
-
+    [Header("폭발 데미지")]
+    [SerializeField] int explosionDamage;
     [Header("색상 변경 시간")]
     [SerializeField] float interval = 1.0f;
-
     [Header("변경 색상")]
     [SerializeField] Color color;
 
@@ -88,7 +86,19 @@ public class FireMinion_Follow : State
     }
     void Explose()
     {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach (var hitCollider in hitColliders)
+        {
+            // Entity 컴포넌트를 가지고 있는지 확인
+            EntityStats stats = hitCollider.GetComponent<EntityStats>();
+            if (stats != null)
+            {
+                // TakeDamage 함수 실행
+                stats.TakeDamage(explosionDamage);
+            }
+        }
         Destroy(enemy.gameObject);
+
     }
 
     void ChangeColor()
