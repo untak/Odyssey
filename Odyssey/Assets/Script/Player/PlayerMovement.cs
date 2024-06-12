@@ -1,3 +1,4 @@
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded = true;
     bool isJump = false;
     bool isDoubleJump = false;
+    GameObject groundObject;
 
     [Header("낙하")]
     [SerializeField] float fallMultiplier = 2.5f;
@@ -21,8 +23,18 @@ public class PlayerMovement : MonoBehaviour
     float attackCooldownDelta = 0;
     [SerializeField] float attackDuration;
     float attackDurationDelta = 0;
+    [SerializeField] int dashDamage = 0;
     [SerializeField] GameObject horizontalHitBox;
     [SerializeField] GameObject downHitBox;
+
+    [Header("대쉬")]
+    [SerializeField] float dashSpeed = 20f;
+    [SerializeField] float dashDuration = 0.2f;
+    [SerializeField] float dashCooldown = 1f;
+    bool isDashing = false;
+    float dashTime = 0;
+    float dashCooldownDelta = 0;
+    [SerializeField] int damageDuringDash = 10;
 
     Player player;
 
@@ -31,23 +43,25 @@ public class PlayerMovement : MonoBehaviour
         player = GetComponent<Player>();
         attackCooldownDelta = attackCooldown;
     }
+
     private void Update()
     {
         #region 바닥 판정
-        // 바닥 판정
+        RaycastHit hit;
         Debug.DrawRay(transform.position, Vector3.down * raycastDistance, Color.red);
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, raycastDistance);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance);
         if (isGrounded && player.rigidbody.velocity.y <= 0)
         {
+            groundObject = hit.collider.gameObject;
             isJump = false;
             isDoubleJump = false;
         }
         #endregion
 
         #region 쿨타임
-        // 공격 쿨타임
         attackCooldownDelta += Time.deltaTime;
-        // 공격 비활성화
+        dashCooldownDelta += Time.deltaTime;
+
         attackDurationDelta += Time.deltaTime;
         if (attackDurationDelta > attackDuration)
         {
@@ -56,15 +70,51 @@ public class PlayerMovement : MonoBehaviour
         }
         #endregion
 
-        Attack(); // 공격
-        JumpAndFall(); // 점프 및 낙하
+        if (!isDashing) // 대쉬 중이 아닐 때만 다른 동작 수행
+        {
+            Attack(); // 공격
+            JumpAndFall(); // 점프 및 낙하
+        }
+
+        Dash(); // 대쉬
     }
+
     private void FixedUpdate()
     {
-        StopMove(); // 이동 멈춤
-        LeftMove(); // 좌측 이동
-        RightMove(); // 우측 이동
+        if (!isDashing) // 대쉬 중이 아닐 때만 이동 수행
+        {
+            StopMove(); // 이동 멈춤
+            LeftMove(); // 좌측 이동
+            RightMove(); // 우측 이동
+        }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (isDashing && other.gameObject.layer == (int)Define.LayerMask.ENEMY)
+        {
+            EnemyStats enemy = other.gameObject.GetComponent<EnemyStats>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damageDuringDash);
+            }
+
+            if (other.GetComponent<GroundMinion>() != null)
+            {
+                isDashing = false;
+            }
+        }
+        else if (isDashing && other.gameObject.layer == (int)Define.LayerMask.GROUND)
+        {
+            if(other.gameObject != groundObject)
+            {
+                isDashing = false;
+                player.rigidbody.useGravity = true;
+                player.collider.isTrigger = false;
+            }
+        }
+    }
+
     void StopMove()
     {
         if ((InputManager.Instance.IsLeftMove && InputManager.Instance.IsRightMove) || (!InputManager.Instance.IsLeftMove && !InputManager.Instance.IsRightMove))
@@ -76,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (InputManager.Instance.IsRightMove)
         {
-            player.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+            player.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
             player.rigidbody.velocity = new Vector3(moveSpeed, player.rigidbody.velocity.y, player.rigidbody.velocity.z);
         }
     }
@@ -84,13 +134,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (InputManager.Instance.IsLeftMove)
         {
-            player.transform.rotation = Quaternion.Euler(Vector3.zero);
+            player.transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
             player.rigidbody.velocity = new Vector3(-moveSpeed, player.rigidbody.velocity.y, player.rigidbody.velocity.z);
         }
     }
     void JumpAndFall()
     {
-        // 점프
         if (InputManager.Instance.IsJump)
         {
             if (isGrounded)
@@ -105,7 +154,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        // 낙하
         if (player.rigidbody.velocity.y < 0)
         {
             player.rigidbody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -119,16 +167,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (InputManager.Instance.IsAttack)
         {
-            // 쿨타임이면 return
             if (attackCooldownDelta < attackCooldown)
                 return;
 
-            // 공중이고 아래키를 누르고 있으면 하단 공격
             if (InputManager.Instance.IsDownMove && !isGrounded)
             {
                 downHitBox.gameObject.SetActive(true);
             }
-            // 횡공격
             else
             {
                 horizontalHitBox.gameObject.SetActive(true);
@@ -138,5 +183,32 @@ public class PlayerMovement : MonoBehaviour
             attackDurationDelta = 0;
         }
     }
+    void Dash()
+    {
+        if (InputManager.Instance.IsDash && dashCooldownDelta >= dashCooldown)
+        {
+            isDashing = true;
+            dashTime = 0;
+            dashCooldownDelta = 0;
+            player.collider.isTrigger = true;
+            player.rigidbody.useGravity = false;
+        }
 
+        if (isDashing)
+        {
+            dashTime += Time.deltaTime;
+
+            if (dashTime < dashDuration)
+            {
+                Vector3 dashDirection = player.transform.forward;
+                player.rigidbody.velocity = dashDirection * dashSpeed;
+            }
+            else
+            {
+                isDashing = false;
+                player.rigidbody.useGravity = true;
+                player.collider.isTrigger = false;
+            }
+        }
+    }
 }

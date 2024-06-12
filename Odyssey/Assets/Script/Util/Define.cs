@@ -17,8 +17,7 @@ public class Define : MonoBehaviour
     {
         PLAYER = 3,
         ENEMY = 6,
-        SPAWNER = 7,
+        IGNOREENEMY = 7,
         GROUND = 8,
-        PLAYERHIT = 10,
     }
 }
