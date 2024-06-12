@@ -79,7 +79,7 @@ public class InputManager : MonoBehaviour
         IsLeftMove = Input.GetKey(leftMove);
         IsRightMove = Input.GetKey(rightMove);
         IsDownMove = Input.GetKey(downMove);
-        IsJump = Input.GetKey(jump);
+        IsJump = Input.GetKeyDown(jump);
         IsAttack = Input.GetKeyDown(attack);
         IsDash = Input.GetKeyDown(dash);
     }

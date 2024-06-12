@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Á¡ÇÁ")]
     [SerializeField] float jumpForce = 10f;
     bool isGrounded = true;
+    bool isJump = false;
+    bool isDoubleJump = false;
 
     [Header("³«ÇÏ")]
     [SerializeField] float fallMultiplier = 2.5f;
@@ -35,6 +37,11 @@ public class PlayerMovement : MonoBehaviour
         // ¹Ù´Ú ÆÇÁ¤
         Debug.DrawRay(transform.position, Vector3.down * raycastDistance, Color.red);
         isGrounded = Physics.Raycast(transform.position, Vector3.down, raycastDistance);
+        if (isGrounded && player.rigidbody.velocity.y <= 0)
+        {
+            isJump = false;
+            isDoubleJump = false;
+        }
         #endregion
 
         #region ÄðÅ¸ÀÓ
@@ -50,13 +57,13 @@ public class PlayerMovement : MonoBehaviour
         #endregion
 
         Attack(); // °ø°Ý
+        JumpAndFall(); // Á¡ÇÁ ¹× ³«ÇÏ
     }
     private void FixedUpdate()
     {
         StopMove(); // ÀÌµ¿ ¸ØÃã
         LeftMove(); // ÁÂÃø ÀÌµ¿
         RightMove(); // ¿ìÃø ÀÌµ¿
-        JumpAndFall(); // Á¡ÇÁ ¹× ³«ÇÏ
     }
     void StopMove()
     {
@@ -84,9 +91,18 @@ public class PlayerMovement : MonoBehaviour
     void JumpAndFall()
     {
         // Á¡ÇÁ
-        if (InputManager.Instance.IsJump && isGrounded)
+        if (InputManager.Instance.IsJump)
         {
-            player.rigidbody.velocity += Vector3.up * jumpForce;
+            if (isGrounded)
+            {
+                player.rigidbody.velocity += Vector3.up * jumpForce;
+                isJump = true;
+            }
+            else if (isJump && !isDoubleJump)
+            {
+                player.rigidbody.velocity += Vector3.up * jumpForce;
+                isDoubleJump = true;
+            }
         }
 
         // ³«ÇÏ
@@ -122,4 +138,5 @@ public class PlayerMovement : MonoBehaviour
             attackDurationDelta = 0;
         }
     }
+
 }
