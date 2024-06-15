@@ -147,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
                 player.rigidbody.velocity += Vector3.up * jumpForce;
                 isJump = true;
             }
-            else if (isJump && !isDoubleJump)
+            else if (isJump && !isDoubleJump && GameScene.Instance.canDoubleJump)
             {
                 player.rigidbody.velocity += Vector3.up * jumpForce;
                 isDoubleJump = true;
@@ -185,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Dash()
     {
-        if (InputManager.Instance.IsDash && dashCooldownDelta >= dashCooldown)
+        if (InputManager.Instance.IsDash && dashCooldownDelta >= dashCooldown && GameScene.Instance.canDash)
         {
             isDashing = true;
             dashTime = 0;

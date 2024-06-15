@@ -9,6 +9,10 @@ public abstract class EntityStats : MonoBehaviour
     {
         return damage;
     }
+    public void SetHp(int value)
+    {
+        hp = value;
+    }
     public virtual void TakeDamage(int damage)
     {
         hp -= damage;
