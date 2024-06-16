@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("³«ÇÏ")]
     [SerializeField] float fallMultiplier = 2.5f;
     [SerializeField] float lowJumpMultiplier = 2f;
+    [SerializeField] float raycastStartPoint = 0;
     [SerializeField] float raycastDistance = 1.1f;
 
     [Header("°ø°Ý")]
@@ -47,9 +48,12 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         #region ¹Ù´Ú ÆÇÁ¤
+        if (isGrounded)
+            Debug.Log("asdf");
         RaycastHit hit;
-        Debug.DrawRay(transform.position, Vector3.down * raycastDistance, Color.red);
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance);
+        Vector3 startPoint = new Vector3(transform.position.x, transform.position.y + raycastStartPoint, transform.position.z);
+        Debug.DrawRay(startPoint, Vector3.down * raycastDistance, Color.red);
+        isGrounded = Physics.Raycast(startPoint, Vector3.down * raycastDistance, out hit, raycastDistance);
         if (isGrounded && player.rigidbody.velocity.y <= 0)
         {
             groundObject = hit.collider.gameObject;
@@ -119,6 +123,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if ((InputManager.Instance.IsLeftMove && InputManager.Instance.IsRightMove) || (!InputManager.Instance.IsLeftMove && !InputManager.Instance.IsRightMove))
         {
+            if(!isJump)
+            {
+                player.anim.PlayAnimation("idle");
+            }
             player.rigidbody.velocity = new Vector3(0, player.rigidbody.velocity.y, player.rigidbody.velocity.z);
         }
     }
@@ -126,6 +134,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (InputManager.Instance.IsRightMove)
         {
+            if(!isJump)
+            {
+                player.anim.PlayAnimation("run");
+            }
             player.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
             player.rigidbody.velocity = new Vector3(moveSpeed, player.rigidbody.velocity.y, player.rigidbody.velocity.z);
         }
@@ -134,6 +146,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (InputManager.Instance.IsLeftMove)
         {
+            if (!isJump)
+            {
+                player.anim.PlayAnimation("run");
+            }
             player.transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
             player.rigidbody.velocity = new Vector3(-moveSpeed, player.rigidbody.velocity.y, player.rigidbody.velocity.z);
         }
@@ -144,11 +160,13 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isGrounded)
             {
+                player.anim.PlayAnimation("jump");
                 player.rigidbody.velocity += Vector3.up * jumpForce;
                 isJump = true;
             }
             else if (isJump && !isDoubleJump && GameScene.Instance.canDoubleJump)
             {
+                player.anim.PlayAnimation("jump");
                 player.rigidbody.velocity += Vector3.up * jumpForce;
                 isDoubleJump = true;
             }
@@ -157,10 +175,18 @@ public class PlayerMovement : MonoBehaviour
         if (player.rigidbody.velocity.y < 0)
         {
             player.rigidbody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            if(!isGrounded)
+            {
+                player.anim.PlayAnimation("fall");
+            }
         }
         else if (player.rigidbody.velocity.y > 0 && !InputManager.Instance.IsJump)
         {
             player.rigidbody.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            if(!isGrounded)
+            {
+                player.anim.PlayAnimation("fall");
+            }
         }
     }
     void Attack()

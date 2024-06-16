@@ -6,10 +6,12 @@ public class Player : Entity
 
     [HideInInspector] public PlayerMovement movement;
     [HideInInspector] public playerStats stats;
+    [HideInInspector] public PlayerAnimationController anim;
 
     private void Awake()
     {
         collider = GetComponent<CapsuleCollider>();
+        anim = GetComponent<PlayerAnimationController>();
         stats = GetComponent<playerStats>();
         movement = GetComponent<PlayerMovement>();
 
