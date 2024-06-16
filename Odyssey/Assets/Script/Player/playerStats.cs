@@ -14,10 +14,6 @@ public class playerStats : EntityStats
     }
     private void Start()
     {
-        if(GameScene.Instance.canAddHp)
-        {
-            SetHp(5);
-        }
     }
     private void Update()
     {
@@ -25,11 +21,6 @@ public class playerStats : EntityStats
         if (immuneTimeDelta > 0)
         {
             immuneTimeDelta -= Time.deltaTime;
-        }
-
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(1);
         }
     }
 
