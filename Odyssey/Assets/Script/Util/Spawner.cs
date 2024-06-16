@@ -28,20 +28,23 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        timer += Time.deltaTime;
+        if(waterMinion != null)
+        {
+            timer += Time.deltaTime;
 
-        if (!hasSpawned && timer >= spawnTime)
-        {
-            go = Instantiate(waterMinion, GetRandomPositionInBounds(), Quaternion.identity);
-            hasSpawned = true;
-            timer = 0f; // 타이머를 초기화하여 다음 단계로 넘어감
-        }
-        else if (hasSpawned && timer >= waitingTime)
-        {
-            go.GetComponent<WaterMinion>().ChangeState(go.GetComponent<WaterMinion>().launchState);
-            go.GetComponent<Rigidbody>().AddForce(Vector3.right * launchForce, ForceMode.Impulse);
-            hasSpawned = false;
-            timer = 0f; // 타이머를 초기화하여 다음 단계로 넘어감
+            if (!hasSpawned && timer >= spawnTime)
+            {
+                go = Instantiate(waterMinion, GetRandomPositionInBounds(), Quaternion.identity);
+                hasSpawned = true;
+                timer = 0f; // 타이머를 초기화하여 다음 단계로 넘어감
+            }
+            else if (hasSpawned && timer >= waitingTime)
+            {
+                go.GetComponent<WaterMinion>().ChangeState(go.GetComponent<WaterMinion>().launchState);
+                go.GetComponent<Rigidbody>().AddForce(Vector3.right * launchForce, ForceMode.Impulse);
+                hasSpawned = false;
+                timer = 0f; // 타이머를 초기화하여 다음 단계로 넘어감
+            }
         }
     }
 
@@ -62,5 +65,16 @@ public class Spawner : MonoBehaviour
 
         boxCollider.excludeLayers = ~0;
         bounds = boxCollider.bounds; // BoxCollider의 경계 정보를 가져옴
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision != null)
+        {
+            if(collision.gameObject.layer == (int)Define.LayerMask.PLAYER)
+            {
+                collision.gameObject.GetComponent<playerStats>().TakeDamage(999);
+            }
+        }
     }
 }
