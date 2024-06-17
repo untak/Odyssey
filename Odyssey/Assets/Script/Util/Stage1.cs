@@ -43,6 +43,7 @@ public class Stage1 : MonoBehaviour, StageGimmick
     public void Excute()
     {
         phaseTimeDelta += Time.deltaTime;
+        Debug.Log(phaseTimeDelta);
 
         // 경고 페이즈
         if (phase == Define.GimmickPhase_Stage1.WARNING)
@@ -70,6 +71,7 @@ public class Stage1 : MonoBehaviour, StageGimmick
         {
             if(phaseTimeDelta < waitingTime)
             {
+
             }
             else if(phaseTimeDelta >= waitingTime)
             {
@@ -84,10 +86,10 @@ public class Stage1 : MonoBehaviour, StageGimmick
         {
             // 초기화
             phase = Define.GimmickPhase_Stage1.WARNING;
+            fireWall.SetActive(true);
             warningObject.transform.localScale = Vector3.zero;
             phaseTimeDelta = 0;
             coolDownDelta = 0;
-            // fireWall.SetActive(false);
         }
     }
 }

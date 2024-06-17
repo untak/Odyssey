@@ -5,7 +5,7 @@ public class Enemy : Entity
     [Header("현재 상태")]
     [SerializeField] protected State currentState;
     [Header("스탯")]
-    [SerializeField] protected EntityStats stats;
+    [SerializeField] public EntityStats stats;
     public EnemySoundController sound;
 
     public State getState()

@@ -49,7 +49,7 @@ public class playerStats : EntityStats
         player.sound.PlayHitSound();
         Debug.Log("asdf");
     }
-    protected override void Dead()
+    public override void Dead()
     {
         base.Dead(); // 기본 죽음 처리 로직 실행
         player.sound.PlayDeadSound();

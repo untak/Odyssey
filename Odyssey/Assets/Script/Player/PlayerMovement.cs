@@ -37,6 +37,10 @@ public class PlayerMovement : MonoBehaviour
     float dashCooldownDelta = 0;
     [SerializeField] int damageDuringDash = 10;
 
+    [SerializeField] GameObject doubleJumpEffect;
+    [SerializeField] GameObject dashEffect;
+    [SerializeField] GameObject attackEffect;
+    [SerializeField] Vector3 attackEffectPosition;
     Player player;
 
     private void Start()
@@ -166,6 +170,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 player.anim.PlayAnimation("jump");
                 player.sound.PlayDoubleJumpSound();
+                Instantiate(doubleJumpEffect, transform.position, transform.rotation);
                 player.rigidbody.velocity += Vector3.up * jumpForce;
                 isDoubleJump = true;
             }
@@ -197,19 +202,23 @@ public class PlayerMovement : MonoBehaviour
 
             if (InputManager.Instance.IsDownMove && !isGrounded)
             {
+                Instantiate(attackEffect, transform.position + attackEffectPosition, transform.rotation);
                 downHitBox.gameObject.SetActive(true);
             }
             else
             {
+                Instantiate(attackEffect, transform.position + attackEffectPosition, transform.rotation);
                 horizontalHitBox.gameObject.SetActive(true);
             }
             player.sound.PlayAttackSound();
+
             attackCooldownDelta = 0;
             attackDurationDelta = 0;
         }
     }
     void Dash()
     {
+        GameObject _dashEffect = null;
         if (InputManager.Instance.IsDash && dashCooldownDelta >= dashCooldown && GameScene.Instance.canDash)
         {
             isDashing = true;
@@ -218,6 +227,7 @@ public class PlayerMovement : MonoBehaviour
             player.collider.isTrigger = true;
             player.rigidbody.useGravity = false;
             player.sound.PlayDashSound();
+            _dashEffect = Instantiate(dashEffect, transform.position, transform.rotation);
         }
 
         if (isDashing)
@@ -234,6 +244,7 @@ public class PlayerMovement : MonoBehaviour
                 isDashing = false;
                 player.rigidbody.useGravity = true;
                 player.collider.isTrigger = false;
+                Destroy(_dashEffect);
             }
         }
     }

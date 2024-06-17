@@ -8,6 +8,6 @@ public class Test : MonoBehaviour
 
     private void Start()
     {
-        Instantiate(effect);
+        Instantiate(effect, transform);
     }
 }
