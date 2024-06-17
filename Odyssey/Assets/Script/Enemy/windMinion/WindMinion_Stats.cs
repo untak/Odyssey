@@ -54,5 +54,10 @@ public class WindMinion_Stats : EnemyStats
             // Æ¨±è »óÅÂ È°¼ºÈ­
             isBouncing = true;
         }
+
+        if (collision.gameObject.layer == (int)Define.LayerMask.PLAYER)
+        {
+            collision.gameObject.GetComponent<Player>().stats.TakeDamage(damage);
+        }
     }
 }

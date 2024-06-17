@@ -6,15 +6,16 @@ public class WaterMinion_Stats : EnemyStats
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision != null) 
-        { 
-            if(collision.gameObject.layer == (int)Define.LayerMask.GROUND)
+        if (collision != null)
+        {
+            if (collision.gameObject.layer == (int)Define.LayerMask.GROUND)
             {
                 enemy.rigidbody.velocity = Vector3.zero;
             }
-            else if(collision.gameObject.layer == (int)Define.LayerMask.PLAYER)
+            else if (collision.gameObject.layer == (int)Define.LayerMask.PLAYER)
             {
                 isPlayerCrash = true;
+                collision.gameObject.GetComponent<Player>().stats.TakeDamage(damage);
             }
         }
     }

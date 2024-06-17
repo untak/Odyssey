@@ -53,4 +53,9 @@ public class playerStats : EntityStats
         base.Dead(); // 기본 죽음 처리 로직 실행
         player.sound.PlayDeadSound();
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
+    }
 }

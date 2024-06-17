@@ -2,10 +2,6 @@ using UnityEngine;
 
 public class GroundMinion : Enemy
 {
-    [Header("히트 박스 위치")]
-    [SerializeField] Vector3 boxSize = new Vector3(1, 1, 1);
-    [SerializeField] Vector3 damagePos;
-
     private void Awake()
     {
         sound = GetComponent<EnemySoundController>();

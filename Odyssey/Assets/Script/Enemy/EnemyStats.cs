@@ -8,13 +8,6 @@ public class EnemyStats : EntityStats
     {
         enemy = gameObject.GetComponent<Enemy>();
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.layer == (int)Define.LayerMask.PLAYER)
-        {
-            collision.gameObject.GetComponent<Player>().stats.TakeDamage(damage);
-        }
-    }
 
     public override void TakeDamage(int damage)
     {
