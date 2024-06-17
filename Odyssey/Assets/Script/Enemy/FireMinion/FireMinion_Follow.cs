@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class FireMinion_Follow : State
@@ -15,11 +14,11 @@ public class FireMinion_Follow : State
     [Header("색상 변경 시간")]
     [SerializeField] float interval = 1.0f;
     [Header("변경 색상")]
-    [SerializeField] Color color;
+    [SerializeField] Color changeColor;
 
     Player player = null;
-    Renderer objectRenderer;
-    Color originalColor;
+    Renderer[] objectRenderer;
+    Color[] originalColor;
     bool isColorChange = false;
     float timer = 0;
 
@@ -28,9 +27,14 @@ public class FireMinion_Follow : State
         // 플레이어 저장
         player = FindObjectOfType<Player>();
         // 객체의 Renderer를 가져와 초기 색상을 저장
-        objectRenderer = GetComponentInParent<Renderer>();
-        originalColor = GetComponentInParent<Renderer>().material.color;
+        objectRenderer = enemy.GetComponentsInChildren<Renderer>();
+        originalColor = new Color[objectRenderer.Length]; // 초기화 추가
+        for (int i = 0; i < objectRenderer.Length; i++)
+        {
+            originalColor[i] = objectRenderer[i].material.color;
+        }
     }
+
     public override State Execute()
     {
         FollowPlayer(); // 플레이어 추격
@@ -43,7 +47,7 @@ public class FireMinion_Follow : State
         }
         else
         {
-            objectRenderer.material.color = originalColor;
+            OriginColor(true);
             explosionTimeDelta = 0;
         }
 
@@ -55,6 +59,7 @@ public class FireMinion_Follow : State
 
         return this;
     }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
@@ -76,14 +81,24 @@ public class FireMinion_Follow : State
         }
         return false;
     }
+
     void FollowPlayer()
     {
         if (player != null)
         {
             Vector3 newPosition = new Vector3(player.transform.position.x, enemy.transform.position.y, enemy.transform.position.z);
             enemy.transform.position = Vector3.Lerp(enemy.transform.position, newPosition, followSpeed * Time.deltaTime);
+            if (player.transform.position.x > transform.position.x)
+            {
+                enemy.gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+            }
+            else
+            {
+                enemy.gameObject.transform.rotation = Quaternion.Euler(0, -90, 0);
+            }
         }
     }
+
     void Explose()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
@@ -100,6 +115,7 @@ public class FireMinion_Follow : State
         enemy.sound.PlayFireMinionExplosion();
         Destroy(enemy.gameObject);
     }
+
     void ChangeColor()
     {
         timer += Time.deltaTime; // 프레임 시간 누적
@@ -109,15 +125,33 @@ public class FireMinion_Follow : State
             // interval 시간만큼 지났으면 색상 변경
             if (isColorChange)
             {
-                objectRenderer.material.color = originalColor;
+                OriginColor(true);
             }
             else
             {
-                objectRenderer.material.color = Color.red;
+                OriginColor(false);
             }
 
             isColorChange = !isColorChange; // 색상 변경 상태 반전
             timer = 0f; // 타이머 초기화
+        }
+    }
+
+    void OriginColor(bool origin)
+    {
+        if (origin)
+        {
+            for (int i = 0; i < objectRenderer.Length; i++)
+            {
+                objectRenderer[i].material.color = originalColor[i];
+            }
+        }
+        else
+        {
+            for (int i = 0; i < objectRenderer.Length; i++)
+            {
+                objectRenderer[i].material.color = changeColor; // 수정된 색상 변수 사용
+            }
         }
     }
 }
