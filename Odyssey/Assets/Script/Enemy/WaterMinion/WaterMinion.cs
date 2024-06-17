@@ -6,6 +6,8 @@ public class WaterMinion : Enemy
     public State launchState;
     private void Awake()
     {
+        sound = GetComponent<EnemySoundController>();
+
         RigidbodyInit();
         stats = GetComponent<WaterMinion_Stats>();
     }

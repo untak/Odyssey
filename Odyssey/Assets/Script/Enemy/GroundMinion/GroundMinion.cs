@@ -8,6 +8,8 @@ public class GroundMinion : Enemy
 
     private void Awake()
     {
+        sound = GetComponent<EnemySoundController>();
+
         this.RigidbodyInit();
         stats = GetComponent<GroundMinion_stats>();
     }

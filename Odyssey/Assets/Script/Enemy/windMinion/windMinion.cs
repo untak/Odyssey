@@ -8,6 +8,8 @@ public class windMinion : Enemy
 
     private void Awake()
     {
+        sound = GetComponent<EnemySoundController>();
+
         RigidbodyInit();
         stats = GetComponent<WindMinion_Stats>();
     }

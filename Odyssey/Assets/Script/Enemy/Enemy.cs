@@ -6,6 +6,7 @@ public class Enemy : Entity
     [SerializeField] protected State currentState;
     [Header("Ω∫≈»")]
     [SerializeField] protected EntityStats stats;
+    public EnemySoundController sound;
 
     public State getState()
     {

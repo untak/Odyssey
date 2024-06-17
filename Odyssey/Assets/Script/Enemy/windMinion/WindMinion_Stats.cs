@@ -35,6 +35,11 @@ public class WindMinion_Stats : EnemyStats
     {
         // Damage logic here
     }
+    protected override void Dead()
+    {
+        enemy.sound.PlayDeadSound();
+        base.Dead();
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision != null && !isBouncing)

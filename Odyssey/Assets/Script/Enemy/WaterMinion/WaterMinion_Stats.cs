@@ -22,4 +22,10 @@ public class WaterMinion_Stats : EnemyStats
     {
         base.TakeDamage(damage);
     }
+
+    protected override void Dead()
+    {
+        enemy.sound.PlayDeadSound();
+        base.Dead();
+    }
 }

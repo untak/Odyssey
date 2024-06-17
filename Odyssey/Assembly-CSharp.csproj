@@ -64,6 +64,7 @@
     <Compile Include="Assets\Script\Enemy\EntityStats.cs" />
     <Compile Include="Assets\Script\Util\StageGimmick.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\SpringCollider.cs" />
+    <Compile Include="Assets\Script\Enemy\Enemy.cs" />
     <Compile Include="Assets\Script\Player\DownPlayerWeapon.cs" />
     <Compile Include="Assets\PlayerSoundController.cs" />
     <Compile Include="Assets\Assets\JMO Assets\Cartoon FX\Scripts\CFX_ShurikenThreadFix.cs" />
@@ -81,7 +82,6 @@
     <Compile Include="Assets\Resources\Hovl Studio\Resources\Scripts\Hovl_Laser.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\SetShadowResolution.cs" />
     <Compile Include="Assets\Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
-    <Compile Include="Assets\Script\Enemy\GroundMinion\Enemy.cs" />
     <Compile Include="Assets\Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
     <Compile Include="Assets\Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_Translate.cs" />
     <Compile Include="Assets\Script\Enemy\WindMinion\WindMinion_Wait.cs" />
@@ -127,6 +127,7 @@
     <Compile Include="Assets\Script\Player\playerStats.cs" />
     <Compile Include="Assets\Resources\Hovl Studio\Resources\Scripts\For demo scenes\HS_RaycastInstance.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\CameraController.cs" />
+    <Compile Include="Assets\EnemySoundController.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\FaceUpdate.cs" />
     <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\RandomWind.cs" />

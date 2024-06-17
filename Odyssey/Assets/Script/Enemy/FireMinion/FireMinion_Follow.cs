@@ -97,10 +97,9 @@ public class FireMinion_Follow : State
                 stats.TakeDamage(explosionDamage);
             }
         }
+        enemy.sound.PlayFireMinionExplosion();
         Destroy(enemy.gameObject);
-
     }
-
     void ChangeColor()
     {
         timer += Time.deltaTime; // 프레임 시간 누적

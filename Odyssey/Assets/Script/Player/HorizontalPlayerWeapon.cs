@@ -13,7 +13,7 @@ public class HorizontalPlayerWeapon : MonoBehaviour
     {
         if(other.gameObject.layer == (int)Define.LayerMask.ENEMY)
         {
-            if(GetComponent<EnemyStats>() != null)
+            if(other.GetComponent<EnemyStats>() != null)
             {
                 other.GetComponent<EnemyStats>().TakeDamage(player.stats.GetDamage());
             }
