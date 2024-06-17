@@ -15,6 +15,7 @@ public class FireMinion_Follow : State
     [SerializeField] float interval = 1.0f;
     [Header("변경 색상")]
     [SerializeField] Color changeColor;
+    [SerializeField] GameObject bombEffect;
 
     Player player = null;
     Renderer[] objectRenderer;
@@ -113,7 +114,8 @@ public class FireMinion_Follow : State
             }
         }
         enemy.sound.PlayFireMinionExplosion();
-        Destroy(enemy.gameObject);
+        Instantiate(bombEffect);
+        enemy.stats.Dead();
     }
 
     void ChangeColor()

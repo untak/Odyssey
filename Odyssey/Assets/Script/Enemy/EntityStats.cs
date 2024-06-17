@@ -21,7 +21,7 @@ public abstract class EntityStats : MonoBehaviour
             Dead();
         }
     }
-    protected virtual void Dead()
+    public virtual void Dead()
     {
         Instantiate(deadEffect);
         Destroy(gameObject);

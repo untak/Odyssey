@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 4801378393766792954}
   - component: {fileID: 468380818930665903}
   m_Layer: 0
-  m_Name: PlayerHitBox
+  m_Name: HitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8036dd34c0bef9d41ac7c89647251ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 999
 --- !u!1001 &4484803446585187502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -167,7 +168,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3bae03ec235bce44bbf1e53cf520d9bd, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3bae03ec235bce44bbf1e53cf520d9bd, type: 3}
       propertyPath: m_LocalScale.z

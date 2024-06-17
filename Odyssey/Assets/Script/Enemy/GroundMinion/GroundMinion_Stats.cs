@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundMinion_stats : EnemyStats
 {
-    protected override void Dead()
+    public override void Dead()
     {
         enemy.sound.PlayDeadSound();
         base.Dead();

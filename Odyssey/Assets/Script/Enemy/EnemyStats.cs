@@ -13,7 +13,7 @@ public class EnemyStats : EntityStats
     {
         base.TakeDamage(damage);
     }
-    protected override void Dead()
+    public override void Dead()
     {
         base.Dead();
     }

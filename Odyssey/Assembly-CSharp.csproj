@@ -113,6 +113,7 @@
     <Compile Include="Assets\Assets\EgyptMonsters\Scripts\DemoController.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\SpringManager.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\ThirdPersonCamera.cs" />
+    <Compile Include="Assets\EffectDeactiver.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\SetShadowQuality.cs" />
     <Compile Include="Assets\Script\Enemy\WaterMinion\WaterMinion.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\IdleChanger.cs" />
