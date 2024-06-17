@@ -48,8 +48,6 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         #region ¹Ù´Ú ÆÇÁ¤
-        if (isGrounded)
-            Debug.Log("asdf");
         RaycastHit hit;
         Vector3 startPoint = new Vector3(transform.position.x, transform.position.y + raycastStartPoint, transform.position.z);
         Debug.DrawRay(startPoint, Vector3.down * raycastDistance, Color.red);
@@ -167,6 +165,7 @@ public class PlayerMovement : MonoBehaviour
             else if (isJump && !isDoubleJump && GameScene.Instance.canDoubleJump)
             {
                 player.anim.PlayAnimation("jump");
+                player.sound.PlayDoubleJumpSound();
                 player.rigidbody.velocity += Vector3.up * jumpForce;
                 isDoubleJump = true;
             }
@@ -204,7 +203,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 horizontalHitBox.gameObject.SetActive(true);
             }
-
+            player.sound.PlayAttackSound();
             attackCooldownDelta = 0;
             attackDurationDelta = 0;
         }
@@ -218,6 +217,7 @@ public class PlayerMovement : MonoBehaviour
             dashCooldownDelta = 0;
             player.collider.isTrigger = true;
             player.rigidbody.useGravity = false;
+            player.sound.PlayDashSound();
         }
 
         if (isDashing)

@@ -65,6 +65,7 @@
     <Compile Include="Assets\Script\Util\StageGimmick.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\SpringCollider.cs" />
     <Compile Include="Assets\Script\Player\DownPlayerWeapon.cs" />
+    <Compile Include="Assets\PlayerSoundController.cs" />
     <Compile Include="Assets\Assets\JMO Assets\Cartoon FX\Scripts\CFX_ShurikenThreadFix.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\RefleshProbe.cs" />
     <Compile Include="Assets\Resources\Hovl Studio\Resources\Scripts\HS_HittedObject.cs" />
@@ -75,9 +76,9 @@
     <Compile Include="Assets\Script\Util\Spawner.cs" />
     <Compile Include="Assets\Hp_UI.cs" />
     <Compile Include="Assets\Resources\Hovl Studio\Resources\Scripts\HS_ParticleCollisionInstance.cs" />
-    <Compile Include="Assets\Resources\Hovl Studio\Resources\Scripts\Hovl_Laser.cs" />
     <Compile Include="Assets\Resources\Hovl Studio\Resources\Scripts\HS_ProjectileMover2D.cs" />
     <Compile Include="Assets\Resources\Hovl Studio\Resources\Scripts\Hovl_DemoLasers.cs" />
+    <Compile Include="Assets\Resources\Hovl Studio\Resources\Scripts\Hovl_Laser.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\SetShadowResolution.cs" />
     <Compile Include="Assets\Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
     <Compile Include="Assets\Script\Enemy\GroundMinion\Enemy.cs" />
@@ -87,8 +88,8 @@
     <Compile Include="Assets\Script\Enemy\GroundMinion\GroundMinion.cs" />
     <Compile Include="Assets\Script\Enemy\FireMinion\FireMinion_Stats.cs" />
     <Compile Include="Assets\Script\Util\Define.cs" />
-    <Compile Include="Assets\Script\Util\GameScene.cs" />
     <Compile Include="Assets\Resources\Hovl Studio\Resources\Scripts\For demo scenes\HS_DemoShooting.cs" />
+    <Compile Include="Assets\Script\Util\GameScene.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyStats.cs" />
     <Compile Include="Assets\Assets\EgyptMonsters\Scripts\DestroyMe.cs" />
     <Compile Include="Assets\Script\Util\CameraMover.cs" />

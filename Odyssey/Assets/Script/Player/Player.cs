@@ -7,9 +7,11 @@ public class Player : Entity
     [HideInInspector] public PlayerMovement movement;
     [HideInInspector] public playerStats stats;
     [HideInInspector] public PlayerAnimationController anim;
+    [HideInInspector] public PlayerSoundController sound;
 
     private void Awake()
     {
+        sound = GetComponent<PlayerSoundController>();
         collider = GetComponent<CapsuleCollider>();
         anim = GetComponent<PlayerAnimationController>();
         stats = GetComponent<playerStats>();

@@ -46,10 +46,11 @@ public class playerStats : EntityStats
         base.TakeDamage(damage); // 기본 데미지 처리 로직 실행
         FindObjectOfType<Hp_UI>().SetHp_UI(damage);
         immuneTimeDelta = immuneTime;  // 무적 시간 초기화
-        Debug.Log(hp);
+        player.sound.PlayHitSound();
     }
     protected override void Dead()
     {
         base.Dead(); // 기본 죽음 처리 로직 실행
+        player.sound.PlayDeadSound();
     }
 }
