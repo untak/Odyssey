@@ -37,6 +37,8 @@ public class Hp_UI : MonoBehaviour
     }
     public void SetHp_UI(int damage)
     {
+        if (damage <= 0)
+            return;
         int damageCount = damage;
         // 배열의 마지막 인덱스부터 시작해서 역순으로 검사
         for (int i = currentSprites.Length - 2; i >= 0; i--)

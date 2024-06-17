@@ -4,7 +4,7 @@ public abstract class EntityStats : MonoBehaviour
 {
     [SerializeField] protected int hp;
     [SerializeField] protected int damage;
-
+    [SerializeField] GameObject deadEffect;
     public int GetDamage()
     {
         return damage;
@@ -23,6 +23,7 @@ public abstract class EntityStats : MonoBehaviour
     }
     protected virtual void Dead()
     {
+        Instantiate(deadEffect);
         Destroy(gameObject);
     }
 }

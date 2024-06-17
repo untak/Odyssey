@@ -33,6 +33,7 @@ public class WindMinion_Stats : EnemyStats
 
     public override void TakeDamage(int damage)
     {
+        base.TakeDamage(damage);
         // Damage logic here
     }
     protected override void Dead()

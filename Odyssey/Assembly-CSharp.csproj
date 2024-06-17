@@ -107,6 +107,7 @@
     <Compile Include="Assets\Script\Enemy\WindMinion\windMinion.cs" />
     <Compile Include="Assets\Script\Enemy\GroundMinion\GroundMinion_FallState.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\Scenes\Mirror\Scripts\MirrorReflection.cs" />
+    <Compile Include="Assets\Test.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\AutoBlinkforSD.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\SpringBone.cs" />
     <Compile Include="Assets\Assets\EgyptMonsters\Scripts\DemoController.cs" />

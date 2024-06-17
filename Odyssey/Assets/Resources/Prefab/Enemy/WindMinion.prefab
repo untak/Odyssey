@@ -725,6 +725,7 @@ GameObject:
   - component: {fileID: 3762887955268981345}
   - component: {fileID: -1080279220795551274}
   - component: {fileID: -8634672183564794831}
+  - component: {fileID: 843061189770602256}
   m_Layer: 6
   m_Name: WindMinion
   m_TagString: Untagged
@@ -813,6 +814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   damage: 0
+  deadEffect: {fileID: 6284491963791109403, guid: 3eff77124a7ea53488b504723d777514, type: 3}
   bounceForce: 3
   bounceTime: 1
   waitState: {fileID: 3282409261734601419}
@@ -829,9 +831,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 0}
-  currentState: {fileID: 8527909892178781634}
+  currentState: {fileID: 0}
   stats: {fileID: 9089434348322057879}
   sound: {fileID: 0}
+  initState: {fileID: 8527909892178781634}
 --- !u!114 &-1080279220795551274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,6 +949,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &843061189770602256
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423014784311394306}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5590142415161742150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,7 +1428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextState: {fileID: 8527909892178781634}
-  waitTime: 0
+  waitTime: 3
   waitTimeDelta: 0
 --- !u!1 &8480792499918225478
 GameObject:

@@ -47,6 +47,7 @@ public class playerStats : EntityStats
         FindObjectOfType<Hp_UI>().SetHp_UI(damage);
         immuneTimeDelta = immuneTime;  // 무적 시간 초기화
         player.sound.PlayHitSound();
+        Debug.Log("asdf");
     }
     protected override void Dead()
     {

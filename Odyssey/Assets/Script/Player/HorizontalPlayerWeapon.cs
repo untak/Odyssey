@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HorizontalPlayerWeapon : MonoBehaviour
@@ -11,12 +9,13 @@ public class HorizontalPlayerWeapon : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == (int)Define.LayerMask.ENEMY)
+        if (other != null)
         {
-            if(other.GetComponent<EnemyStats>() != null)
+            if (other.gameObject.layer == (int)Define.LayerMask.ENEMY)
             {
                 other.GetComponent<EnemyStats>().TakeDamage(player.stats.GetDamage());
             }
         }
+
     }
 }
