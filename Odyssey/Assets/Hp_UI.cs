@@ -39,7 +39,7 @@ public class Hp_UI : MonoBehaviour
     {
         int damageCount = damage;
         // 배열의 마지막 인덱스부터 시작해서 역순으로 검사
-        for (int i = hpImages.Length - 1; i >= 0; i--)
+        for (int i = currentSprites.Length - 2; i >= 0; i--)
         {
             // 해당 오브젝트가 활성화되어 있다면
             if (hpImages[i].sprite != hp_Unfilled)
