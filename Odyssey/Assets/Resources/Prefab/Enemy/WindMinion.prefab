@@ -84,7 +84,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100004, guid: 86b218d3ae7649141a8a0fdb8cee785a, type: 3}
+  - {fileID: 2100000, guid: 5fa8aa191fb2e8e4898b59ef8243aa16, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -742,7 +742,7 @@ Transform:
   m_GameObject: {fileID: 5423014784311394306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4392906657733806867}
@@ -750,7 +750,7 @@ Transform:
   - {fileID: 5199107763580267279}
   - {fileID: 1748190483436581710}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1964295900465473161
 SphereCollider:
