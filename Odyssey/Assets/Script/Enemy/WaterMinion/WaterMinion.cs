@@ -23,6 +23,10 @@ public class WaterMinion : Enemy
     protected override void RigidbodyInit()
     {
         base.RigidbodyInit();
+        rigidbody.constraints = RigidbodyConstraints.FreezePositionZ |
+                 RigidbodyConstraints.FreezeRotationZ |
+                 RigidbodyConstraints.FreezeRotationY |
+                 RigidbodyConstraints.FreezeRotationX;
         rigidbody.useGravity = false;
     }
 }

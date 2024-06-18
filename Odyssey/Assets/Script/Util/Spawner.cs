@@ -34,7 +34,7 @@ public class Spawner : MonoBehaviour
 
             if (!hasSpawned && timer >= spawnTime)
             {
-                go = Instantiate(waterMinion, GetRandomPositionInBounds(), Quaternion.identity);
+                go = Instantiate(waterMinion, GetRandomPositionInBounds(), Quaternion.Euler(-90, 0, 0));
                 hasSpawned = true;
                 timer = 0f; // 타이머를 초기화하여 다음 단계로 넘어감
             }
