@@ -63,6 +63,7 @@
     <Compile Include="Assets\Script\Enemy\WaterMinion\WaterMinion_Stats.cs" />
     <Compile Include="Assets\Script\Enemy\EntityStats.cs" />
     <Compile Include="Assets\Script\Util\StageGimmick.cs" />
+    <Compile Include="Assets\ClearImage.cs" />
     <Compile Include="Assets\Samples\Unity Toon Shader\0.10.0-preview\Universal render pipeline\UnityChan\Scripts\SpringCollider.cs" />
     <Compile Include="Assets\Script\Enemy\Enemy.cs" />
     <Compile Include="Assets\Script\Player\DownPlayerWeapon.cs" />

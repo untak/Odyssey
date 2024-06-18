@@ -20,4 +20,14 @@ public class Define : MonoBehaviour
         IGNOREENEMY = 7,
         GROUND = 8,
     }
+
+    public enum Scene
+    {
+        CLEAR,
+        STAGE1,
+        STAGE2,
+        STAGE3,
+        STAGE4,
+        STAGE5,
+    }
 }
