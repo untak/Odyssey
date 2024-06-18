@@ -23,7 +23,7 @@ public abstract class EntityStats : MonoBehaviour
     }
     public virtual void Dead()
     {
-        Instantiate(deadEffect);
+        Instantiate(deadEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }
