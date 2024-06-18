@@ -26,7 +26,7 @@ public class WaterMinion_Stats : EnemyStats
 
     public override void Dead()
     {
-        enemy.sound.PlayDeadSound();
+        SoundManager.Instance.PlayDeadSound();
         base.Dead();
     }
 }

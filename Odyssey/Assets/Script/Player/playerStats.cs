@@ -25,10 +25,6 @@ public class playerStats : EntityStats
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(1);
-        }
         // 매 프레임마다 남은 무적 시간을 감소시킴
         if (immuneTimeDelta > 0)
         {
@@ -47,11 +43,11 @@ public class playerStats : EntityStats
         FindObjectOfType<Hp_UI>().SetHp_UI(damage);
         immuneTimeDelta = immuneTime;  // 무적 시간 초기화
         player.sound.PlayHitSound();
-        Debug.Log("asdf");
     }
     public override void Dead()
     {
         base.Dead(); // 기본 죽음 처리 로직 실행
+        GetComponent<SkinnedMeshRenderer>().enabled = false;
         player.sound.PlayDeadSound();
     }
 

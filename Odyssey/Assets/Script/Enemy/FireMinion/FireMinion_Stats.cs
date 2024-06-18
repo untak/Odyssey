@@ -4,7 +4,7 @@ public class FireMinion_Stats : EnemyStats
 {
     public override void Dead()
     {
-        enemy.sound.PlayDeadSound();
+        SoundManager.Instance.PlayDeadSound();
         base.Dead();
     }
     private void OnCollisionEnter(Collision collision)

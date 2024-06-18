@@ -60,7 +60,6 @@ public class FireMinion_Follow : State
 
         return this;
     }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
@@ -113,8 +112,8 @@ public class FireMinion_Follow : State
                 stats.TakeDamage(explosionDamage);
             }
         }
-        enemy.sound.PlayFireMinionExplosion();
-        Instantiate(bombEffect);
+        SoundManager.Instance.PlayFireMinionExplosion();
+        Instantiate(bombEffect, enemy.transform.position, enemy.transform.rotation);
         enemy.stats.Dead();
     }
 

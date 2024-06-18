@@ -6,7 +6,7 @@ public class GroundMinion_stats : EnemyStats
 {
     public override void Dead()
     {
-        enemy.sound.PlayDeadSound();
+        SoundManager.Instance.PlayDeadSound();
         base.Dead();
     }
 }

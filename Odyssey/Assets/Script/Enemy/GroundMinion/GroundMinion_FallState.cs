@@ -7,7 +7,7 @@ public class GroundMinion_FallState : State
     public override void Enter()
     {
         enemy.rigidbody.isKinematic = false;
-        enemy.sound.PlayEarthMinionFallSound();
+        SoundManager.Instance.PlayEarthMinionFallSound();
     }
 
     public override State Execute()
