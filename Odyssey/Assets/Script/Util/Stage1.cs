@@ -28,8 +28,8 @@ public class Stage1 : MonoBehaviour, StageGimmick
     {
         player = FindObjectOfType<Player>();
         warningObject.SetActive(false);
+        phase = Define.GimmickPhase_Stage1.WARNING;
     }
-
     void Update()
     {
         coolDownDelta += Time.deltaTime;
@@ -39,7 +39,6 @@ public class Stage1 : MonoBehaviour, StageGimmick
             Excute();
         }
     }
-
     public void Excute()
     {
         phaseTimeDelta += Time.deltaTime;
@@ -87,6 +86,7 @@ public class Stage1 : MonoBehaviour, StageGimmick
             // √ ±‚»≠
             phase = Define.GimmickPhase_Stage1.WARNING;
             fireWall.SetActive(true);
+            fireWall.transform.position = warningObject.transform.position;
             warningObject.transform.localScale = Vector3.zero;
             phaseTimeDelta = 0;
             coolDownDelta = 0;

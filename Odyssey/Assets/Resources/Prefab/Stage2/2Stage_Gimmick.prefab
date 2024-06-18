@@ -32,7 +32,7 @@ Transform:
   - {fileID: 4167083267010036183}
   - {fileID: 4926073413734142273}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2072976954770824440
 MonoBehaviour:
@@ -47,11 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDown: 9
-  warningTime: 1
+  warningTime: 3
   scalingSpeed: 3
   warningObject: {fileID: 6191185546566559276}
   maxScale: 5
-  waitingTime: 1.5
+  waitingTime: 3
   holdingTime: 2
   fireWall: {fileID: 3646885224050984957}
 --- !u!1001 &302644665182209266
@@ -68,15 +68,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4643167319814886835, guid: 26e8f822d20c31a44b09660ea5c9f502, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.767032
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4643167319814886835, guid: 26e8f822d20c31a44b09660ea5c9f502, type: 3}
       propertyPath: m_LocalScale.y
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4643167319814886835, guid: 26e8f822d20c31a44b09660ea5c9f502, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4.767032
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4643167319814886835, guid: 26e8f822d20c31a44b09660ea5c9f502, type: 3}
       propertyPath: m_LocalPosition.x
@@ -121,6 +121,10 @@ PrefabInstance:
     - target: {fileID: 5897665798725149406, guid: 26e8f822d20c31a44b09660ea5c9f502, type: 3}
       propertyPath: m_Name
       value: warningObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897665798725149406, guid: 26e8f822d20c31a44b09660ea5c9f502, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

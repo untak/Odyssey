@@ -11,8 +11,8 @@ public class GameScene : MonoBehaviour
     }
     #endregion
 
+    [SerializeField] public GameObject stageGimmick;
     [SerializeField] public int stage = 1;
-    [SerializeField] StageGimmick stageGimmick;
     [SerializeField] public bool canDoubleJump = false;
     [SerializeField] public bool canDash = false;
     [SerializeField] public bool canAddHp = false;
@@ -37,7 +37,7 @@ public class GameScene : MonoBehaviour
     {
         if (stageGimmick != null)
         {
-            stageGimmick.Excute();
+            stageGimmick.GetComponent<StageGimmick>().Excute();
         }
     }
 
