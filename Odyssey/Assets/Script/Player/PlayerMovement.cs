@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] int dashDamage = 0;
     [SerializeField] GameObject horizontalHitBox;
     [SerializeField] GameObject downHitBox;
+    [SerializeField] GameObject upHitBox;
 
     [Header("´ë½¬")]
     [SerializeField] float dashSpeed = 20f;
@@ -73,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontalHitBox.gameObject.SetActive(false);
             downHitBox.gameObject.SetActive(false);
+            upHitBox.gameObject.SetActive(false);
         }
         #endregion
 
@@ -200,9 +202,14 @@ public class PlayerMovement : MonoBehaviour
             if (attackCooldownDelta < attackCooldown)
                 return;
 
-            if (InputManager.Instance.IsDownMove && !isGrounded)
+            if(InputManager.Instance.IsUpMove)
             {
-                Instantiate(attackEffect, transform.position + attackEffectPosition, transform.rotation);
+                Instantiate(attackEffect, transform.position + attackEffectPosition, Quaternion.Euler(0, -90, 90));
+                upHitBox.gameObject.SetActive(true);
+            }
+            else if (InputManager.Instance.IsDownMove && !isGrounded)
+            {
+                Instantiate(attackEffect, transform.position + attackEffectPosition, Quaternion.Euler(0, -90, -90));
                 downHitBox.gameObject.SetActive(true);
             }
             else
