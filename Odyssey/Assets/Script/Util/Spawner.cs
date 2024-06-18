@@ -63,7 +63,6 @@ public class Spawner : MonoBehaviour
             gameObject.AddComponent<BoxCollider>();
         }
 
-        boxCollider.excludeLayers = ~0;
         bounds = boxCollider.bounds; // BoxCollider의 경계 정보를 가져옴
     }
 
