@@ -37,8 +37,4 @@ public class EnemySoundController : MonoBehaviour
     {
         audio.PlayOneShot(fireMinion_Explosion);
     }
-    public void PlayWindMinionDash()
-    {
-        audio.PlayOneShot(windMinionDash);
-    }
 }

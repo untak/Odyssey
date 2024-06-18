@@ -11,7 +11,6 @@ public class WindMinion_Rush : State
     {
         targetPos = (FindObjectOfType<Player>().transform.position - transform.position).normalized;
         enemy.rigidbody.velocity = targetPos * moveSpeed;
-        enemy.sound.PlayWindMinionDash();
         enemy.transform.LookAt(targetPos);
     }
     public override State Execute()
