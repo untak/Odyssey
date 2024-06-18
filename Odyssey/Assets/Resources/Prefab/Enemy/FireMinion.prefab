@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7651984971342415269}
   - component: {fileID: 6114950496498379557}
   - component: {fileID: 7083383399011146093}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pSphere8_high
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 2482018755944443386}
   - component: {fileID: 4550940461060797507}
   - component: {fileID: 7678862638066270071}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pSphere8_high2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ Transform:
   - {fileID: 2482018755944443386}
   - {fileID: 71717347397141283}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3833283472720694565
 BoxCollider:
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 71717347397141283}
   - component: {fileID: 5021411205490160372}
   - component: {fileID: 8085142341631211809}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pSphere10_high
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,7 +616,7 @@ GameObject:
   - component: {fileID: 5709286751122133713}
   - component: {fileID: 2168846104643405835}
   - component: {fileID: 1431315515903899984}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: draft_pCone3_high
   m_TagString: Untagged
   m_Icon: {fileID: 0}
