@@ -5,9 +5,11 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("이동")]
     [SerializeField] float moveSpeed = 5f;
+    bool isLeft = true;
 
     [Header("점프")]
     [SerializeField] float jumpForce = 10f;
+    [SerializeField] float doubleJumpForce = 10f;
     bool isGrounded = true;
     bool isJump = false;
     bool isDoubleJump = false;
@@ -142,6 +144,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 player.anim.PlayAnimation("run");
             }
+            isLeft = false;
             player.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
             player.rigidbody.velocity = new Vector3(moveSpeed, player.rigidbody.velocity.y, player.rigidbody.velocity.z);
         }
@@ -154,6 +157,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 player.anim.PlayAnimation("run");
             }
+            isLeft = true;
             player.transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
             player.rigidbody.velocity = new Vector3(-moveSpeed, player.rigidbody.velocity.y, player.rigidbody.velocity.z);
         }
@@ -173,7 +177,7 @@ public class PlayerMovement : MonoBehaviour
                 player.anim.PlayAnimation("jump");
                 player.sound.PlayDoubleJumpSound();
                 Instantiate(doubleJumpEffect, transform.position, transform.rotation);
-                player.rigidbody.velocity += Vector3.up * jumpForce;
+                player.rigidbody.velocity += Vector3.up * doubleJumpForce;
                 isDoubleJump = true;
             }
         }
@@ -204,17 +208,24 @@ public class PlayerMovement : MonoBehaviour
 
             if(InputManager.Instance.IsUpMove)
             {
-                Instantiate(attackEffect, transform.position + attackEffectPosition, Quaternion.Euler(0, -90, 90));
+                Instantiate(attackEffect, transform.position + attackEffectPosition, Quaternion.Euler(-65, -290, -250));
                 upHitBox.gameObject.SetActive(true);
             }
             else if (InputManager.Instance.IsDownMove && !isGrounded)
             {
-                Instantiate(attackEffect, transform.position + attackEffectPosition, Quaternion.Euler(0, -90, -90));
+                Instantiate(attackEffect, transform.position + attackEffectPosition, Quaternion.Euler(70, 280, -110));
                 downHitBox.gameObject.SetActive(true);
             }
             else
             {
-                Instantiate(attackEffect, transform.position + attackEffectPosition, transform.rotation);
+                if(isLeft)
+                {
+                    Instantiate(attackEffect, transform.position + attackEffectPosition, Quaternion.Euler(-13, 265, -100));
+                }
+                else
+                {
+                    Instantiate(attackEffect, transform.position + attackEffectPosition, Quaternion.Euler(-15, 75, -80));
+                }
                 horizontalHitBox.gameObject.SetActive(true);
             }
             player.sound.PlayAttackSound();
