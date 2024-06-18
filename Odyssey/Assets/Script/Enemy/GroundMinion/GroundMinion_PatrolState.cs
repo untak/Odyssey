@@ -11,13 +11,16 @@ public class GroundMinion_PatrolState : State
 
     public override State Execute()
     {
-        if (Physics.OverlapSphere(transform.position, scanRadius, (int)Define.LayerMask.PLAYER) != null)
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, scanRadius);
+        int i = 0;
+        while (i < hitColliders.Length)
         {
-            return nextState;
+            if(hitColliders[i].gameObject.layer == (int)Define.LayerMask.PLAYER)
+            {
+                return nextState;
+            }
+            i++;
         }
-        else
-        {
-            return this;
-        }
+        return this;
     }
 }
