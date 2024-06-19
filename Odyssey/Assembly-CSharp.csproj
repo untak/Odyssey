@@ -145,6 +145,7 @@
     <Compile Include="Assets\Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_New.cs" />
     <Compile Include="Assets\Resources\Hovl Studio\Resources\Scripts\HS_ProjectileMover.cs" />
     <Compile Include="Assets\Script\Util\Entity.cs" />
+    <Compile Include="Assets\SoundManager.cs" />
     <Compile Include="Assets\Script\Player\Player.cs" />
     <Compile Include="Assets\Script\Enemy\FireMinion\FireMinion.cs" />
     <Compile Include="Assets\Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
